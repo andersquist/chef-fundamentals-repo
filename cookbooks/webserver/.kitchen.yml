@@ -1,0 +1,23 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_solo
+
+platforms:
+  - name: windows-2012R2
+    driver_config:
+      box: /Users/anders/boxes/windows-2012R2-serverstandard-amd64_virtualbox.box
+      network:
+      - ["forwarded_port", {guest: 3389, host: 3389}]
+      - ["forwarded_port", {guest: 80, host: 8880}]
+      - ["forwarded_port", {guest: 81, host: 8881}]
+
+suites:
+  - name: default
+    run_list:
+      - recipe[webserver::default]
+    attributes:
+      motd:
+        company: Chef
