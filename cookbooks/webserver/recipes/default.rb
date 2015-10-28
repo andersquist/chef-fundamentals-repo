@@ -56,7 +56,7 @@ node["iis"]["sites"].each do |site_name, site_data|
   end
 
   # Add a template resource for Default.htm
-  template "#{site_directory}\Default.htm" do
+  template "#{site_directory}\\Default.htm" do
     source "Default.htm.erb"
     variables(
       :site_name => site_name,
