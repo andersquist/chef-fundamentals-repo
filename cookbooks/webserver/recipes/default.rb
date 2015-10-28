@@ -31,7 +31,7 @@ include_recipe 'iis::remove_default_site'
 
 # Iterate over attributes
 node["iis"]["sites"].each do |site_name, site_data|
-  site_directory = "C:\\inetpub\\sites\\#{site_name}"
+  site_directory = "#{ENV['SYSTEMDRIVE']}\\inetpub\\sites\\#{site_name}"
 
   # Create the site directory and give IIS_IUSRS read rights.
   directory site_directory do
