@@ -41,17 +41,17 @@ node["iis"]["sites"].each do |site_name, site_data|
   end
 
   # Create the app pool.
-  iis_pool "#{site_name}" do
+  iis_pool site_name do
     runtime_version '4.0'
     action :add
   end
 
   # Create the site.
-  iis_site "#{site_name}" do
+  iis_site site_name do
     protocol :http
     port site_data["port"]
     path site_directory
-    application_pool "#{site_name}"
+    application_pool site_name
     action [:add, :start]
   end
 
