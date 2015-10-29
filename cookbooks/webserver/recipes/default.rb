@@ -66,7 +66,7 @@ node["iis"]["sites"].each do |site_name, site_data|
 end
 
 # Add firewall rule for bear site...
-windows_firewall_rule 'bear' do
+windows_firewall_rule 'bear' do 
   localport '81'
   protocol 'TCP'
   firewall_action :allow
